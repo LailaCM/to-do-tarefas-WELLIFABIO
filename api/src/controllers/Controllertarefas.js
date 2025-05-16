@@ -1,7 +1,7 @@
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
-const criarTarefa = async (req, res) => {
+const create = async (req, res) => {
   const { descricao, setor, prioridade, usuarioId } = req.body;
 
   if (!descricao || !setor || !prioridade || !usuarioId) {
@@ -19,7 +19,7 @@ const criarTarefa = async (req, res) => {
   }
 };
 
-const listarTarefas = async (req, res) => {
+const read = async (req, res) => {
   try {
     const tarefas = await prisma.tarefa.findMany({ include: { usuario: true } });
     return res.json(tarefas);
@@ -28,7 +28,7 @@ const listarTarefas = async (req, res) => {
   }
 };
 
-const atualizarTarefa = async (req, res) => {
+const update = async (req, res) => {
   const { id } = req.params;
   const { descricao, setor, prioridade, status } = req.body;
 
@@ -43,7 +43,7 @@ const atualizarTarefa = async (req, res) => {
   }
 };
 
-const deletarTarefa = async (req, res) => {
+const deletar = async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -58,5 +58,5 @@ module.exports = {
   create,
   read,
   update,
-  remove
+  deletar
 };
