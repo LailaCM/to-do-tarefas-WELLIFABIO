@@ -7,7 +7,7 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "LailaCM",
   "license": "ISC",
   "description": "",
   "dependencies": {
